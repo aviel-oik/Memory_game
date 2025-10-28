@@ -1,8 +1,10 @@
 import game
 from game import coord_input
+import tools
 
 def play(size):
     state = game.init_game(size)
+    tools.print_board(state["board_close"])
     win = False
     while not win:
         a,b = coord_input(state)

@@ -3,9 +3,6 @@ import random
 def create_board(size):
     matrix_close = [[" X" for x in range(size)] for x in range(size)]
     total_cells = size * size
-    # # Vérifie que le nombre total de cases est pair
-    # if total_cells % 2 != 0:
-    #     raise ValueError("La taille doit permettre un nombre pair de cases.")
     numbers = list(range(1, total_cells // 2 + 1)) * 2
     random.shuffle(numbers)
     matrix_open = [numbers[i * size:(i + 1) * size] for i in range(size)]
@@ -21,6 +18,9 @@ def valid_input(state, x, y):
             valid = False
         if y[i] < 0 or y[i] >= size:
             valid = False
+    if not valid:
+        print("coordinates outside the limit")
+
     return valid
 
 

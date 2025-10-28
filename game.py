@@ -38,6 +38,7 @@ def valid_round(state, x, y):
     valid = tools.valid_input(state, x, y)
     if x in state["open_card"] or y in state["open_card"]:
         valid = False
+        print("card already open")
     return valid
 
 
@@ -55,18 +56,18 @@ def play_round(state, x, y):
         state["open_card"].append([x[0], x[1]])
         state["open_card"].append([y[0], y[1]])
     tools.print_board(state["board_close"])
-    print(state["open_card"])
 
 
 
 def is_win(state):
     win = True
     board = state["board_close"]
-    for i in range(len(board)):
-        for j in range(len(board[i])):
-            if board[i][j] == "X":
+    for i in range(0, len(board)):
+        for j in range(0, len(board)):
+            if board[i][j] == " X":
                 win = False
-    print(f"\nCongratulations!!!\nYou won after {state["tries"]} tries.")
+    if win:
+        print(f"\nCongratulations!!!\nYou won after {state["tries"]} tries.")
     return win
 
 
